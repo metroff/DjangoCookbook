@@ -1,0 +1,2 @@
+# DjangoCookbook
+Simple Django project
