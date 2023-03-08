@@ -1,0 +1,27 @@
+{% extends "cookbook/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <div class="d-flex align-items-center">
+        <div class="flex-shrink-0">
+
+            <img src="{{ user.profile.image.url }}" class="rounded-circle account-img">
+        </div>
+        <div class="flex-grow-1 ms-3">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+        </div>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{ uu_form|crispy }}
+            {{ pu_form|crispy }}
+        </fieldset>
+        <div class="form-group pb-3">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

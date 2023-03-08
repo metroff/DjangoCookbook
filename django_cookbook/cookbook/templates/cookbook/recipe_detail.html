@@ -1,0 +1,28 @@
+{% extends "cookbook/base.html" %}
+{% block content %}
+<article class="d-flex content-section">
+    <div class="flex-shrink-0">
+        <img class="rounded article-img" src="{{ object.image.url }}">
+    </div>
+    <div class="flex-grow-1 ms-3">
+        <div class="article-metadata d-flex flex-row justify-content-between">
+            <div class="d-flex align-items-center">
+            <a href="{% url 'user-recipes' object.author.username %}" class="me-2">{{ object.author }}</a>
+            <small class="text-muted me-auto">{{object.date_posted|date:"F d, Y"}}</small>
+        </div>
+            {% if object.author == user %}
+            <div>
+                <a href="{% url 'recipe-update' object.id %}" class="btn btn-secondary btn-sm mt-1 mb-1">Update</a>
+                <a href="{% url 'recipe-delete' object.id %}" class="btn btn-danger btn-sm mt-1 mb-1">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+        <h2 class="article-title"> {{ object.title }} </h2>
+        <p class="article-content">{{ object.description }}</p>
+        <h3 class="article-title">Ingredients</h3>
+        <p class="article-content">{{ object.ingredients }}</p>
+        <h3 class="article-title">Instructions</h3>
+        <p class="article-content">{{ object.instructions }}</p>
+    </div>
+</article>
+{% endblock content %}

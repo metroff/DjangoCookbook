@@ -1,2 +1,2 @@
 # DjangoCookbook
-Simple Django project
+Simple Django cookbook project
